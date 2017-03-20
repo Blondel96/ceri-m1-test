@@ -2,10 +2,10 @@ machine:
   java:
     version: oraclejdk8
  
-  test:
+test:
     override:
         - junit test/unit-tests # use Junit for testing
-  general:
+general:
     branches:
         only:
             - master # list of branches to build
