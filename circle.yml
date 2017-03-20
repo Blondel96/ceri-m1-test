@@ -4,7 +4,7 @@ machine:
  
 test:
     override:
-        - junit test/unit-tests # use Junit for testing
+        - mvn test
 general:
     branches:
         only:
