@@ -4,15 +4,17 @@ package fr.univavignon.pokedex.api;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+ 
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 
 public final  class IPokemonMetadataProviderTest {
 	
-	@Mock private IPokemonMetadataProvider IpokemonMetadataProviderMock;
-	
+	@Mock 
+	private IPokemonMetadataProvider IpokemonMetadataProviderMock;
 	
 	private PokemonMetadata pokeData = new PokemonMetadata(0, "meta1", 10, 15, 30);
 	@Test 
@@ -27,6 +29,7 @@ public final  class IPokemonMetadataProviderTest {
 	
 	@Before
 	public void setUp() throws PokedexException {
+		MockitoAnnotations.initMocks(this);
 		Mockito.when(IpokemonMetadataProviderMock.getPokemonMetadata(0)).thenReturn(pokeData);
 		Mockito.when(IpokemonMetadataProviderMock.getPokemonMetadata(-1)).thenThrow(new PokedexException("Impossible de trouver le pokemon !"));
 	}
