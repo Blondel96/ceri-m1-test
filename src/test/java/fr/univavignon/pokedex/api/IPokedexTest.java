@@ -57,7 +57,9 @@ public class IPokedexTest {
 	@Before
 	public void setUp() throws PokedexException {
 		MockitoAnnotations.initMocks(this);
-	    List<Pokemon> listPokemon,unmodifiable,sortedList ;
+	    List<Pokemon> listPokemon;
+	    List<Pokemon> unmodifiable;
+	    List<Pokemon> sortedList ;
 		listPokemon= new ArrayList<Pokemon>();
 		listPokemon.add(myPokemon);
 		listPokemon.add(anotherPokemon);
