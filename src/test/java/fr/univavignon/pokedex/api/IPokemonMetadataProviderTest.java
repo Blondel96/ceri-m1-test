@@ -11,15 +11,37 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 
-public final  class IPokemonMetadataProviderTest {
+public  class IPokemonMetadataProviderTest {
 	
 	@Mock 
 	private IPokemonMetadataProvider IpokemonMetadataProviderMock;
-	
-	private PokemonMetadata pokeData = new PokemonMetadata(0, "meta1", 10, 15, 30);
+	private PokemonMetadata pokeData;
+	public IPokemonMetadataProvider getIpokemonMetadataProviderMock() {
+		return IpokemonMetadataProviderMock;
+	}
+
+	public void setIpokemonMetadataProviderMock(IPokemonMetadataProvider ipokemonMetadataProviderMock) {
+		IpokemonMetadataProviderMock = ipokemonMetadataProviderMock;
+	}
+
+	public PokemonMetadata getPokeData() {
+		return pokeData;
+	}
+
+	public void setPokeData(PokemonMetadata pokeData) {
+		this.pokeData = pokeData;
+	}
+
+
 	@Test 
 	public void testgetPokemonMetadata() throws PokedexException{
-		assertEquals(pokeData, IpokemonMetadataProviderMock.getPokemonMetadata(0));
+		 
+		PokemonMetadata data = IpokemonMetadataProviderMock.getPokemonMetadata(pokeData.getIndex()) ;
+		assertEquals(pokeData.getIndex(),data.getIndex());
+		assertEquals(pokeData.getName(),data.getName());
+		assertEquals(pokeData.getStamina(),data.getStamina());
+		assertEquals(pokeData.getAttack(),data.getAttack());
+		assertEquals(pokeData.getDefense(),data.getDefense());
 	}
 	
 	@Test(expected=PokedexException.class)
@@ -30,6 +52,7 @@ public final  class IPokemonMetadataProviderTest {
 	@Before
 	public void setUp() throws PokedexException {
 		MockitoAnnotations.initMocks(this);
+		pokeData = new PokemonMetadata(0, "meta1", 10, 15, 30);
 		Mockito.when(IpokemonMetadataProviderMock.getPokemonMetadata(0)).thenReturn(pokeData);
 		Mockito.when(IpokemonMetadataProviderMock.getPokemonMetadata(-1)).thenThrow(new PokedexException("Impossible de trouver le pokemon !"));
 	}
