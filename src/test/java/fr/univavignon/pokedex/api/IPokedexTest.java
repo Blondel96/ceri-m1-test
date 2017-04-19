@@ -18,7 +18,7 @@ public class IPokedexTest {
 
 	private Pokemon myPokemon = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 0.56);
 	private Pokemon anotherPokemon = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 1);
-	private List<Pokemon> listPokemon,unmodifiable,sortedList ;
+	
 	private Comparator<Pokemon> nameComparator;
 	@Test
 	public void testsize() {
@@ -57,6 +57,7 @@ public class IPokedexTest {
 	@Before
 	public void setUp() throws PokedexException {
 		MockitoAnnotations.initMocks(this);
+	    List<Pokemon> listPokemon,unmodifiable,sortedList ;
 		listPokemon= new ArrayList<Pokemon>();
 		listPokemon.add(myPokemon);
 		listPokemon.add(anotherPokemon);

@@ -19,7 +19,7 @@ public class IPokemonTrainerFactoryTest {
     private IPokedex myPokedex ;
 	@Mock
 	private IPokemonTrainerFactory IpokemonTrainerFactoryMock;
-	private PokemonMetadata pokeData = new PokemonMetadata(0, "meta1", 10, 15, 30);
+	
 	private Pokemon myPokemon = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4,0.56);
 	private Team team;
 	private PokemonTrainer trainer;
