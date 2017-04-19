@@ -36,8 +36,7 @@ public final class Pokemon extends PokemonMetadata {
 	 * @param candy Required candy for upgrading this pokemon.
 	 * @param iv IV perfection percentage.
 	 */
-	public Pokemon(
-			final int index,
+	public Pokemon(final int index,
 			final String name,
 			final int attack,
 			final int defense,
