@@ -89,8 +89,6 @@ public class IPokedexTest {
 		assertTrue(IpokedexMock.getPokemons(indexComparator).getClass().isInstance(Collections.unmodifiableList(new ArrayList<>())));
 		//cpComparator
 		assertTrue(IpokedexMock.getPokemons(cpComparator).getClass().isInstance(Collections.unmodifiableList(new ArrayList<>())));
-		
-		assertEquals(myPokemon.getIndex(),IpokedexMock.getPokemons(nameComparator).get(0).getIndex());
 	}
 	@Before
 	public void setUp() throws PokedexException {
