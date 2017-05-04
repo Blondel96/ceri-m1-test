@@ -32,7 +32,7 @@ public class IPokemonFactoryTest {
 	@Test
 	public void testcreatePokemon(){
 		
-		
+		newPoke = IpokemonFactoryMock.createPokemon(0, 613, 64, 4000, 4);
 		assertEquals(myPokemon.getAttack(),newPoke.getAttack());
 		assertEquals(myPokemon.getDefense(),newPoke.getDefense());
 		assertEquals(myPokemon.getStamina(),newPoke.getStamina());
