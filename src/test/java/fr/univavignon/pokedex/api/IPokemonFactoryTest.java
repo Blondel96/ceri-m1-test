@@ -11,10 +11,27 @@ import org.mockito.MockitoAnnotations;
 public class IPokemonFactoryTest {
 	@Mock
 	private IPokemonFactory IpokemonFactoryMock;
-	private Pokemon myPokemon = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4,0.56);
+	private Pokemon myPokemon;
+	private Pokemon newPoke;
+	public IPokemonFactory getIpokemonFactoryMock() {
+		return IpokemonFactoryMock;
+	}
+
+	public void setIpokemonFactoryMock(IPokemonFactory ipokemonFactoryMock) {
+		IpokemonFactoryMock = ipokemonFactoryMock;
+	}
+
+	public Pokemon getNewPoke() {
+		return newPoke;
+	}
+
+	public void setNewPoke(Pokemon newPoke) {
+		this.newPoke = newPoke;
+	}
+
 	@Test
 	public void testcreatePokemon(){
-		Pokemon newPoke = IpokemonFactoryMock.createPokemon(0, 613, 64, 4000, 4);
+		
 		
 		assertEquals(myPokemon.getAttack(),newPoke.getAttack());
 		assertEquals(myPokemon.getDefense(),newPoke.getDefense());
@@ -31,7 +48,17 @@ public class IPokemonFactoryTest {
 	@Before
 	public void setUp()  {
 		MockitoAnnotations.initMocks(this);
+		myPokemon = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4,0.56);
+	    newPoke = IpokemonFactoryMock.createPokemon(0, 613, 64, 4000, 4);
 		Mockito.when(IpokemonFactoryMock.createPokemon(0, 613, 64, 4000, 4)).thenReturn(myPokemon);
 		
+	}
+
+	public Pokemon getMyPokemon() {
+		return myPokemon;
+	}
+
+	public void setMyPokemon(Pokemon myPokemon) {
+		this.myPokemon = myPokemon;
 	}
 }

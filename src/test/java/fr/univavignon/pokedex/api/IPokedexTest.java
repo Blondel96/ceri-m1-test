@@ -1,7 +1,9 @@
 package fr.univavignon.pokedex.api;
 
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
@@ -11,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class IPokedexTest {
 	@Mock
 	private IPokedex IpokedexMock;
@@ -20,20 +22,52 @@ public class IPokedexTest {
 	private Pokemon anotherPokemon = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 1);
 	
 	private Comparator<Pokemon> nameComparator;
+	
+	 
+
+	public void setIpokedexMock(IPokedex ipokedexMock) {
+		IpokedexMock = ipokedexMock;
+	}
+
+	  
+
+	public void setMyPokemon(Pokemon myPokemon) {
+		this.myPokemon = myPokemon;
+	}
+	public void setAnotherPokemon(Pokemon anotherPokemon) {
+		this.anotherPokemon = anotherPokemon;
+	}
+
+	 
+	public void setNameComparator(Comparator<Pokemon> nameComparator) {
+		this.nameComparator = nameComparator;
+	}
+
+	@Test 
+	public void testaddPokemon() {
+		assertEquals(0, IpokedexMock.addPokemon(myPokemon));
+	}
+	
 	@Test
 	public void testsize() {
 		assertNotNull(IpokedexMock.size());
 	}
 
-	@Test
-	public void testaddPokemon() {
-		assertEquals(myPokemon.getIndex(), IpokedexMock.addPokemon(myPokemon));
-	}
+	
 
 	@Test
 	public void testgetPokemon() throws PokedexException {
-		Pokemon newPoke = IpokedexMock.getPokemon(myPokemon.getIndex());
-		assertEquals(myPokemon, newPoke);
+		Pokemon newPoke = IpokedexMock.getPokemon(0);
+		assertEquals(myPokemon.getAttack(),newPoke.getAttack());
+		assertEquals(myPokemon.getDefense(),newPoke.getDefense());
+		assertEquals(myPokemon.getStamina(),newPoke.getStamina());
+		assertEquals(myPokemon.getCp(),newPoke.getCp());
+		assertEquals(myPokemon.getHp(),newPoke.getHp());
+		assertEquals(myPokemon.getName(),newPoke.getName());
+		assertEquals(myPokemon.getCandy(),newPoke.getCandy());
+		assertEquals(myPokemon.getDust(),newPoke.getDust());
+		assertEquals(myPokemon.getIndex(),newPoke.getIndex());
+		assertEquals(myPokemon.getIv(), newPoke.getIv(),2);
 	}
 
 	@Test(expected = PokedexException.class)
