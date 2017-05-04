@@ -7,11 +7,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import fr.univavignon.pokedex.api.IPokemonFactory;
 import fr.univavignon.pokedex.api.PokedexException;
 import fr.univavignon.pokedex.api.Pokemon;
+import io.github.bonigarcia.wdm.ChromeDriverManager;
  
 
 public class PokemonFactory implements IPokemonFactory {
 	private final String URL_VALUE = "https://pokeassistant.com/main/ivcalculator?locale=en";
-	private final String CHROME_DRIVER = "C:\\Users\\Blondel\\Downloads\\chromedriver_win32\\chromedriver.exe";
+	 
 	@Override
 	public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
 		String name = "";
@@ -22,7 +23,7 @@ public class PokemonFactory implements IPokemonFactory {
 		} catch (IOException e) {
 		
 		}
-		System.setProperty("webdriver.chrome.driver", CHROME_DRIVER);
+		ChromeDriverManager.getInstance().setup();
 		WebDriver phantom = new ChromeDriver();
 		
 		phantom.get(URL_VALUE);
