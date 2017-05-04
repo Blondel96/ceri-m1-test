@@ -1,4 +1,5 @@
 package fr.univavignon.pokedex.core;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.thoughtworks.xstream.XStream;
@@ -39,6 +40,7 @@ public class PokemonTrainerFactory implements IPokemonTrainerFactory {
 
 	@Override
 	public PokemonTrainer createTrainer(String name, Team team, IPokedexFactory pokedexFactory) {
+		try{
 		IPokedex pokedex = pokedexFactory.createPokedex(metadataProvider, pokemonFactory);
 		PokemonTrainer pokemonTrainer = new PokemonTrainer(name, team, pokedex);
 		boolean b = false;
@@ -68,6 +70,11 @@ public class PokemonTrainerFactory implements IPokemonTrainerFactory {
 		}
 		
 		return pokemonTrainer;
+		}
+		catch(IOException ex){
+			return null;
+		}
+		
 	}
 
 }

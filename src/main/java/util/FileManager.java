@@ -2,7 +2,6 @@ package util;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,22 +9,17 @@ import java.io.IOException;
  
 
 public class FileManager {
-	public static void writeFile(String file,String content){
-		try {
+	public static void writeFile(String file,String content) throws IOException{
+		 
 			BufferedWriter fichier = new BufferedWriter(new FileWriter(file));
 			fichier.write(content);
 			fichier.close();
-		} catch (FileNotFoundException e) {
-			
-		} catch (IOException e) {
-			 
-			e.printStackTrace();
-		}
+	 
 		
 	}
-	public static String readFile(String file){
+	public static String readFile(String file) throws IOException{
 		
-		 try {
+ 
 		      String ligne ;
 		      BufferedReader fichier = new BufferedReader(new FileReader(file));
 		      StringBuilder sb = new StringBuilder();
@@ -35,9 +29,7 @@ public class FileManager {
 		      fichier.close();
 		      return sb.toString();
 		      
-		    } catch (Exception e) {
-		      return null;
-		    } 
+		     
 		 
 	}
 }
