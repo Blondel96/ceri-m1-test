@@ -8,7 +8,6 @@ import fr.univavignon.pokedex.api.IPokemonMetadataProvider;
 import fr.univavignon.pokedex.api.IPokemonTrainerFactory;
 import fr.univavignon.pokedex.api.IPokemonTrainerFactoryTest;
 import fr.univavignon.pokedex.api.PokedexException;
-import fr.univavignon.pokedex.api.Team;
 
 public class PokemonTrainerFactoryTest extends IPokemonTrainerFactoryTest {
 	@Override
@@ -24,7 +23,6 @@ public class PokemonTrainerFactoryTest extends IPokemonTrainerFactoryTest {
 		IPokedexFactory pokedexFactory = new PokedexFactory();
 		this.setIpokemonTrainerFactoryMock(pokemonTrainerFactory);
 		this.setIpokedexFactoryMock(pokedexFactory);
-		this.setTeam(Team.INSTINCT);
 		 
 	}
 }

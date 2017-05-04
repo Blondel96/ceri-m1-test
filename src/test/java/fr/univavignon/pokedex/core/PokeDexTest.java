@@ -10,10 +10,10 @@ import fr.univavignon.pokedex.api.PokedexException;
 import fr.univavignon.pokedex.api.Pokemon;
 
 public class PokeDexTest extends IPokedexTest{
-	Comparator<Pokemon> nameComparator = null;
-	PokemonFactory pokemonFactory = new PokemonFactory();
-	Pokemon pokemon = pokemonFactory.createPokemon(1, 613, 64, 4000, 4);
-	Pokemon anotherPokemon = pokemonFactory.createPokemon(63, 500, 30, 2500, 4);
+	private Comparator<Pokemon> nameComparator = null;
+	private PokemonFactory pokemonFactory = new PokemonFactory();
+	private Pokemon pokemon = pokemonFactory.createPokemon(1, 613, 64, 4000, 4);
+	private Pokemon anotherPokemon = pokemonFactory.createPokemon(63, 500, 30, 2500, 4);
 	@Override
 	public void setUp() throws PokedexException {
 		Comparator<Pokemon> nameComparator = new Comparator<Pokemon>() {

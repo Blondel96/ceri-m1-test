@@ -34,7 +34,7 @@ public class PokemonFactory implements IPokemonFactory {
 		phantom.findElement(By.xpath("//*[@id=\"search_hp\"]")).sendKeys(Integer.toString(hp));
 		phantom.findElement(By.xpath("//*[@id=\"search_dust\"]")).sendKeys(Integer.toString(dust));
 		phantom.findElement(By.xpath("//*[@id=\"calculatebtn\"]")).click();
-		
+		// on recupère l'iv l'attack la defense et le stamina
 		int attack = Integer.parseInt(phantom.findElement(By.xpath("//*[@id=\"possiblecombis\"]/tbody/tr[1]/td[2]")).getText());
 		int defense = Integer.parseInt(phantom.findElement(By.xpath("//*[@id=\"possiblecombis\"]/tbody/tr[1]/td[3]")).getText());
 		int stamina = Integer.parseInt(phantom.findElement(By.xpath("//*[@id=\"possiblecombis\"]/tbody/tr[1]/td[4]")).getText());
@@ -46,8 +46,4 @@ public class PokemonFactory implements IPokemonFactory {
 	}
 	
 	
-	
-	public PokemonFactory() {
-	
-	}
 }

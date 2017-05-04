@@ -1071,4 +1071,22 @@
       <pokemonList/>
     </pokedex>
   </fr.univavignon.pokedex.api.PokemonTrainer>
+  <fr.univavignon.pokedex.api.PokemonTrainer>
+    <name>David</name>
+    <team>MYSTIC</team>
+    <pokedex class="fr.univavignon.pokedex.core.Pokedex">
+      <pokemonFactory class="fr.univavignon.pokedex.core.PokemonFactory" reference="../../../fr.univavignon.pokedex.api.PokemonTrainer/pokedex/pokemonFactory"/>
+      <pokemonMetadataProvider class="fr.univavignon.pokedex.core.PokemonMetadataProvider" reference="../../../fr.univavignon.pokedex.api.PokemonTrainer/pokedex/pokemonMetadataProvider"/>
+      <pokemonList/>
+    </pokedex>
+  </fr.univavignon.pokedex.api.PokemonTrainer>
+  <fr.univavignon.pokedex.api.PokemonTrainer>
+    <name>Roger</name>
+    <team>VALOR</team>
+    <pokedex class="fr.univavignon.pokedex.core.Pokedex">
+      <pokemonFactory class="fr.univavignon.pokedex.core.PokemonFactory" reference="../../../fr.univavignon.pokedex.api.PokemonTrainer/pokedex/pokemonFactory"/>
+      <pokemonMetadataProvider class="fr.univavignon.pokedex.core.PokemonMetadataProvider" reference="../../../fr.univavignon.pokedex.api.PokemonTrainer/pokedex/pokemonMetadataProvider"/>
+      <pokemonList/>
+    </pokedex>
+  </fr.univavignon.pokedex.api.PokemonTrainer>
 </list>
