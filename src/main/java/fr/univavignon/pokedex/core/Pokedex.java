@@ -1,21 +1,28 @@
 package fr.univavignon.pokedex.core;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 import fr.univavignon.pokedex.api.IPokedex;
+import fr.univavignon.pokedex.api.IPokemonFactory;
+import fr.univavignon.pokedex.api.IPokemonMetadataProvider;
 import fr.univavignon.pokedex.api.PokedexException;
 import fr.univavignon.pokedex.api.Pokemon;
 import fr.univavignon.pokedex.api.PokemonMetadata;
 
-public class Pokedex implements IPokedex {
-	private PokemonFactory pokemonFactory;
-	private PokemonMetadataProvider pokemonMetadataProvider;
+public class Pokedex implements IPokedex,Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private IPokemonFactory pokemonFactory;
+	private IPokemonMetadataProvider pokemonMetadataProvider;
 	private List<Pokemon> pokemonList;
 	
-	public Pokedex(PokemonFactory pokemonFactory,PokemonMetadataProvider pokemonMetadataProvider) {
+	public Pokedex(IPokemonFactory pokemonFactory,IPokemonMetadataProvider pokemonMetadataProvider) {
 		super();
 		this.pokemonFactory = pokemonFactory;
 		this.pokemonMetadataProvider = pokemonMetadataProvider;

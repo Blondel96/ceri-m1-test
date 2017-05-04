@@ -18,22 +18,27 @@ public class IPokedexFactoryTest {
     @Mock
     private IPokedexFactory IpokedexFactoryMock;
     @Mock
-    private IPokedex myPokedex ;
-    private PokemonMetadata pokeData = new PokemonMetadata(0, "meta1", 10, 15, 30);
-    private Pokemon myPokemon = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4,0.56);
+    private IPokedex myPokedex = null ;
     
 	@Test
 	public void testcreatePokedex(){
-	
-		assertNotNull(IpokedexFactoryMock.createPokedex(IpokemonMetadataProviderMock, IpokemonFactoryMock));
+		IPokedex pokedex = IpokedexFactoryMock.createPokedex(IpokemonMetadataProviderMock, IpokemonFactoryMock);
+		assertNotNull(pokedex);
+		
 	}
 	
 	@Before
 	public void setUp() throws PokedexException {
 		MockitoAnnotations.initMocks(this);
-		Mockito.when(IpokemonMetadataProviderMock.getPokemonMetadata(0)).thenReturn(pokeData);
-		Mockito.when(IpokemonMetadataProviderMock.getPokemonMetadata(-1)).thenThrow(new PokedexException("Impossible de trouver le pokemon !"));
-		Mockito.when(IpokemonFactoryMock.createPokemon(0, 613, 64, 4000, 4)).thenReturn(myPokemon);
 		Mockito.when(IpokedexFactoryMock.createPokedex(IpokemonMetadataProviderMock, IpokemonFactoryMock)).thenReturn(myPokedex);
 	}
+
+	public void setIpokedexFactoryMock(IPokedexFactory ipokedexFactoryMock) {
+		IpokedexFactoryMock = ipokedexFactoryMock;
+	}
+
+	 
+
+	
+	
 }

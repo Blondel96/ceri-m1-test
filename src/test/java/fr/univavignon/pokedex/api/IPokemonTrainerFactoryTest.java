@@ -21,22 +21,36 @@ public class IPokemonTrainerFactoryTest {
 	private IPokemonTrainerFactory IpokemonTrainerFactoryMock;
 	
 	private Pokemon myPokemon = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4,0.56);
-	private Team team;
+	private Team team = Team.INSTINCT;
 	private PokemonTrainer trainer;
 	
 	@Test
 	public void testcreateTrainer(){
-		PokemonTrainer p = IpokemonTrainerFactoryMock.createTrainer("Roger", team, IpokedexFactoryMock);
+		PokemonTrainer p = IpokemonTrainerFactoryMock.createTrainer("Samuel", team, IpokedexFactoryMock);
 		assertEquals(team,p.getTeam());
-		assertEquals(trainer.getName(), p.getName());
-		assertEquals(trainer.getPokedex(), p.getPokedex());
+		assertEquals("Samuel", p.getName());
+		assertNotNull(p.getPokedex());
 	}
 	@Before
 	public void setUp() throws PokedexException {
 		MockitoAnnotations.initMocks(this);
 		Mockito.when(IpokemonFactoryMock.createPokemon(0, 613, 64, 4000, 4)).thenReturn(myPokemon);
 		Mockito.when(IpokedexFactoryMock.createPokedex(IpokemonMetadataProviderMock, IpokemonFactoryMock)).thenReturn(myPokedex);
-		trainer = new PokemonTrainer("Roger", team, IpokedexFactoryMock.createPokedex(IpokemonMetadataProviderMock, IpokemonFactoryMock));
-		Mockito.when(IpokemonTrainerFactoryMock.createTrainer("Roger",team,IpokedexFactoryMock)).thenReturn(trainer);
+		trainer = new PokemonTrainer("Samuel", team, IpokedexFactoryMock.createPokedex(IpokemonMetadataProviderMock, IpokemonFactoryMock));
+		Mockito.when(IpokemonTrainerFactoryMock.createTrainer("Samuel",team,IpokedexFactoryMock)).thenReturn(trainer);
 	}
+ 
+	public void setIpokedexFactoryMock(IPokedexFactory ipokedexFactoryMock) {
+		IpokedexFactoryMock = ipokedexFactoryMock;
+	}
+	 
+	public void setIpokemonTrainerFactoryMock(IPokemonTrainerFactory ipokemonTrainerFactoryMock) {
+		IpokemonTrainerFactoryMock = ipokemonTrainerFactoryMock;
+	}
+	 
+	 
+	public void setTeam(Team team) {
+		this.team = team;
+	}
+	
 }
