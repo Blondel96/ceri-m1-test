@@ -1,7 +1,6 @@
 package fr.univavignon.pokedex.core;
 
 import java.io.IOException;
-import java.util.Comparator;
 
  
 
@@ -15,13 +14,6 @@ public class PokeDexTest extends IPokedexTest{
 	private Pokemon anotherPokemon = pokemonFactory.createPokemon(63, 500, 30, 2500, 4);
 	@Override
 	public void setUp() throws PokedexException {
-		Comparator<Pokemon> nameComparator = new Comparator<Pokemon>() {
-			
-			@Override
-			public int compare(Pokemon o1, Pokemon o2) {
-				return o1.getName().compareTo(o2.getName());
-			}
-		};
 		PokemonMetadataProvider metadataProvider = null;
 		try {
 			metadataProvider = PokemonMetadataProvider.getInstance();
@@ -32,7 +24,6 @@ public class PokeDexTest extends IPokedexTest{
 		pokeDex.addPokemon(pokemon);
 		pokeDex.addPokemon(anotherPokemon);
 		this.setIpokedexMock(pokeDex);
-		this.setNameComparator(nameComparator);
 		this.setMyPokemon(pokemon);
 		this.setAnotherPokemon(anotherPokemon);
 		
