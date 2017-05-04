@@ -1,6 +1,5 @@
 package fr.univavignon.pokedex.core;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.thoughtworks.xstream.XStream;
  
@@ -42,13 +41,16 @@ public class PokemonTrainerFactory implements IPokemonTrainerFactory {
 	public PokemonTrainer createTrainer(String name, Team team, IPokedexFactory pokedexFactory) {
 		IPokedex pokedex = pokedexFactory.createPokedex(metadataProvider, pokemonFactory);
 		PokemonTrainer pokemonTrainer = new PokemonTrainer(name, team, pokedex);
+		boolean b = false;
 		//on verifie si la liste contient des valeurs
 		if(this.pokeTrainerDatas != null && this.pokeTrainerDatas.size() > 0){
 			//on verifie si les données du trainer existe ou pas
 			for(PokemonTrainer p:this.pokeTrainerDatas){
 				if(p.getName().equals(name)){
-					//on retourne le poketrainer
-					return p;
+					//on recupère le poketrainer
+					pokemonTrainer = p;
+					b = true;
+					break;
 				}
 			}
 			
@@ -56,10 +58,15 @@ public class PokemonTrainerFactory implements IPokemonTrainerFactory {
 		else{
 			this.pokeTrainerDatas = new ArrayList<>();
 		}
-		this.pokeTrainerDatas.add(pokemonTrainer);
-		System.out.println(this.pokeTrainerDatas.get(0));
-		String content = xStream.toXML(this.pokeTrainerDatas);
-		FileManager.writeFile(POKETRAINER_FILE, content);
+		if(!b)
+		{
+			//on ajoute le trainer a la liste contenu dans le fichier
+			this.pokeTrainerDatas.add(pokemonTrainer);
+			System.out.println(this.pokeTrainerDatas.get(0));
+			String content = xStream.toXML(this.pokeTrainerDatas);
+			FileManager.writeFile(POKETRAINER_FILE, content);
+		}
+		
 		return pokemonTrainer;
 	}
 
